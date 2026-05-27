@@ -1,22 +1,22 @@
 # Documentación técnica del proyecto
 
-Este documento recoge la información técnica general del proyecto de **péndulo invertido (self-balancing robot)**, incluyendo el diseño mecánico, electrónico y software implementado para el control del sistema.
+Este documento recoge la información técnica general del proyecto de **péndulo invertido autocontrolado (self-balancing robot)**, incluyendo la arquitectura del sistema, el diseño mecánico, la electrónica y el software implementado para el control del robot.
 
-El objetivo del robot es mantener el equilibrio de forma autónoma mediante un sistema de control basado en un **PID**, capaz de corregir la inclinación del robot actuando sobre los motores.
+El objetivo principal del sistema es mantener el equilibrio de forma autónoma mediante un controlador **PID**, capaz de corregir la inclinación del robot actuando sobre los motores en tiempo real.
 
 ---
 
 # Arquitectura general del sistema
 
-El robot se basa en un sistema de control en lazo cerrado compuesto por:
+El robot implementa un sistema de control en lazo cerrado compuesto por las siguientes etapas:
 
-1. **Captura de inclinación** mediante un sensor IMU (**MPU6050**).
+1. **Captura de inclinación** mediante una unidad IMU (**MPU6050**).
 2. **Estimación del ángulo** utilizando acelerómetro y giroscopio.
 3. **Filtrado de señal** mediante un **filtro complementario**.
 4. **Cálculo de la acción de control PID**.
-5. **Control de velocidad y dirección de los motores** para recuperar la posición vertical.
+5. **Actuación sobre los motores** para recuperar la posición vertical.
 
-El flujo simplificado del sistema es:
+El flujo simplificado del sistema es el siguiente:
 
 ```txt
 MPU6050
@@ -34,73 +34,67 @@ Motores
 Corrección de la inclinación
 ```
 
+El sistema realiza un procesamiento continuo de los datos de inclinación y ajusta dinámicamente la velocidad de los motores para compensar perturbaciones y mantener la estabilidad.
+
 ---
 
 # Diseño mecánico
 
-La parte mecánica del robot se centra en conseguir una estructura **estable, compacta y ligera**, favoreciendo un **centro de gravedad bajo** para mejorar el equilibrio.
+La parte mecánica del robot se diseñó con el objetivo de obtener una estructura **compacta, ligera y estable**, favoreciendo un **centro de gravedad bajo** para mejorar el comportamiento dinámico del sistema.
 
-El chasis fue diseñado mediante modelado 3D e impreso en la universidad, adaptándose a las necesidades específicas del proyecto.
+El chasis fue modelado en **Fusion 360** y fabricado mediante **impresión 3D**, permitiendo adaptar la geometría a las necesidades específicas del proyecto y facilitar la integración de los componentes electrónicos.
 
-Entre los aspectos principales del diseño se incluyen:
+Durante el desarrollo se realizaron distintas iteraciones del diseño para optimizar:
 
-- Integración de la PCB personalizada.
-- Soporte para motores y ruedas.
-- Distribución compacta de componentes.
-- Optimización del peso y estabilidad.
+- Distribución del peso.
+- Posicionamiento de la electrónica.
+- Integración de motores y ruedas.
+- Robustez estructural.
+- Facilidad de ensamblaje.
 
-## Archivos incluidos
-
-Dentro de la carpeta `mecanica/` se incluyen:
-
-- Modelos 3D del chasis.
-- Archivos preparados para impresión.
+El diseño final permite alojar de forma compacta todos los elementos del sistema, manteniendo un acceso sencillo a la electrónica y facilitando futuras modificaciones.
 
 ---
 
 # Diseño electrónico
 
-La electrónica del robot fue diseñada sobre una **PCB personalizada desarrollada en KiCad**, permitiendo integrar todos los elementos necesarios en una única placa.
+La electrónica del robot fue diseñada sobre una **PCB personalizada desarrollada en KiCad**, permitiendo integrar los distintos módulos del sistema en una única placa.
 
-Los componentes principales del sistema son:
+Los componentes principales utilizados son:
 
-- **ESP32 DevKitC** → Microcontrolador principal.
-- **MPU6050** → Sensor de inclinación.
+- **ESP32 DevKitC** → Unidad principal de control.
+- **MPU6050** → Sensor IMU para estimación de inclinación.
 - **TB6612FNG** → Driver de control de motores.
 - **LM7805** → Regulación de tensión.
-- Conectores para motores y alimentación.
+- Conectores de alimentación y motores.
 
-La PCB fue diseñada buscando:
+El diseño electrónico se planteó con varios objetivos:
 
-- Reducir cableado.
-- Facilitar el ensamblaje.
-- Mejorar la robustez del sistema.
-- Integrar todos los módulos principales.
+- Reducir el cableado del sistema.
+- Mejorar la integración entre componentes.
+- Facilitar el ensamblaje del robot.
+- Incrementar la robustez del conjunto.
 
-## Archivos incluidos
-
-Dentro de la carpeta `electronica/` se incluyen:
-
-- Esquemático electrónico.
-- Diseño de PCB.
-- Proyecto de KiCad.
+La PCB integra alimentación, control y conexiones de potencia necesarias para el funcionamiento autónomo del sistema.
 
 ---
 
 # Diseño software
 
-El software del robot se ejecuta sobre una **ESP32**, encargándose de procesar la información del sensor y aplicar la lógica de control necesaria para mantener el equilibrio.
+El software del robot se ejecuta sobre una **ESP32**, encargándose de procesar la información procedente del sensor y aplicar la lógica de control necesaria para mantener el equilibrio.
 
-Las principales funciones implementadas son:
+Las funcionalidades principales implementadas son:
 
-- Lectura del **MPU6050**.
-- Estimación del ángulo del robot.
+- Lectura del sensor **MPU6050**.
+- Estimación del ángulo de inclinación.
 - Aplicación de un **filtro complementario**.
-- Cálculo del **control PID**.
-- Control de motores mediante el **TB6612FNG**.
-- Ajuste y depuración mediante **monitor serie**.
+- Implementación del **control PID discreto**.
+- Generación de señales de control para los motores.
+- Ajuste y depuración mediante monitor serie.
 
-La lógica de funcionamiento sigue el siguiente esquema:
+Durante el desarrollo se implementaron distintas versiones del controlador PID con el objetivo de comparar comportamiento, estabilidad y sensibilidad al ruido del sistema.
+
+La lógica simplificada del software es:
 
 ```txt
 Lectura IMU
@@ -116,18 +110,11 @@ Control de motores
 Corrección del equilibrio
 ```
 
-## Archivos incluidos
-
-Dentro de la carpeta `software/` se incluyen:
-
-- Código principal del robot.
-- Versiones de prueba y ajuste del PID.
-
 ---
 
 # Organización del repositorio
 
-El proyecto se organiza en distintas carpetas para facilitar la documentación y el desarrollo:
+El proyecto se organiza en distintas carpetas para separar la documentación y facilitar el desarrollo:
 
 ```txt
 Proyecto_Pendulo_Invertido/
@@ -136,13 +123,15 @@ Proyecto_Pendulo_Invertido/
 ├── costes.md
 ├── documentacion.md
 │
+├── assets/
 ├── electronica/
 ├── mecanica/
-├── software/
-└── assets/
+└── software/
 ```
 
-- **electronica/** → Diseño PCB y documentación electrónica.
-- **mecanica/** → Modelado e impresión del chasis.
-- **software/** → Código del robot y control PID.
-- **assets/** → Imágenes y recursos gráficos del proyecto.
+Cada carpeta contiene información específica del proyecto:
+
+- `electronica/` → Diseño PCB, esquemáticos y archivos de KiCad.
+- `mecanica/` → Modelado 3D y archivos de fabricación.
+- `software/` → Código fuente y pruebas del controlador.
+- `assets/` → Recursos visuales del proyecto.

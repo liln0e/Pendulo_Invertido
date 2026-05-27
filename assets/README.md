@@ -1,6 +1,6 @@
 # Recursos visuales del proyecto
 
-En esta carpeta se incluyen imágenes y recursos gráficos empleados para documentar el desarrollo del **péndulo invertido autocontrolado**, mostrando distintas fases del diseño, fabricación, ensamblaje y diseño electrónico del sistema.
+En esta carpeta se incluyen recursos visuales empleados para documentar el desarrollo del **péndulo invertido autocontrolado**, mostrando distintas fases del diseño electrónico, fabricación y ensamblaje del sistema.
 
 ## Contenido
 

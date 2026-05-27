@@ -19,9 +19,7 @@ El robot se basa en un sistema de control en lazo cerrado compuesto por:
 El flujo simplificado del sistema es:
 
 ```txt
-MPU6050 → Estimación del ángulo → Filtro complementario
-→ Control PID → Driver TB6612FNG → Motores
-→ Corrección de la inclinación
+MPU6050 → Estimación del ángulo → Filtro complementario → Control PID → Driver TB6612FNG → Motores → Corrección de la inclinación
 ```
 
 ---

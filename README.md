@@ -1,37 +1,87 @@
-# Péndulo Invertido
+# Péndulo Invertido Autocontrolado
 
-## Presentación del proyecto
+Proyecto académico de un **péndulo invertido autocontrolado (self-balancing robot)** basado en **ESP32** y control **PID**, diseñado para mantener el equilibrio de forma autónoma mediante sensores inerciales y control en tiempo real.
 
-Este repositorio recoge el desarrollo de un **péndulo invertido autocontrolado (self-balancing robot)**, realizado como proyecto de control y sistemas embebidos. El objetivo principal es diseñar e implementar un sistema capaz de mantenerse en equilibrio de forma autónoma mediante técnicas de control PID.
+![Robot ensamblado](./assets/robot_ensamblado.jpeg)
 
-El proyecto combina diseño mecánico, electrónica y programación embebida para integrar un sistema completo basado en un **ESP32**, un **MPU6050** para la estimación del ángulo y motores DC controlados electrónicamente para corregir la inclinación del sistema.
+---
 
-A lo largo del desarrollo se trabajó en el diseño del chasis, integración electrónica, implementación del software de control y ajuste del controlador para conseguir un comportamiento estable del robot.
+## Descripción del proyecto
+
+Este repositorio recoge el desarrollo de un **robot autoequilibrado de dos ruedas**, integrando diseño mecánico, electrónica y programación embebida.
+
+El sistema utiliza un **ESP32** como unidad principal de control, un sensor **MPU6050** para estimar la inclinación y un controlador **PID** encargado de actuar sobre los motores para mantener el equilibrio.
+
+El proyecto incluye:
+
+- Diseño mecánico del chasis mediante modelado 3D.
+- Diseño electrónico mediante una PCB personalizada en **KiCad**.
+- Programación embebida sobre **ESP32**.
+- Implementación de control **PID** para estabilidad del sistema.
+
+---
+
+## Tecnologías utilizadas
+
+### Hardware
+
+- ESP32 DevKitC  
+- MPU6050  
+- TB6612FNG  
+- LM7805  
+- Motores DC con reductora  
+- PCB personalizada  
+- Chasis impreso en 3D  
+
+### Software y herramientas
+
+- ESP32 / Arduino Framework  
+- KiCad  
+- Fusion 360  
+- Control PID discreto  
+- Filtro complementario  
+
+---
+
+## Estructura del repositorio
+
+```txt
+Proyecto_Pendulo_Invertido/
+│
+├── README.md
+├── costes.md
+├── documentacion.md
+│
+├── assets/
+├── electronica/
+├── mecanica/
+└── software/
+```
+
+### Documentación principal
+
+- [`documentacion.md`](./documentacion.md) → Explicación técnica completa del sistema.
+- [`costes.md`](./costes.md) → Coste aproximado de materiales y componentes.
+
+### Carpetas del proyecto
+
+- [`electronica/`](./electronica/) → Diseño PCB y archivos de KiCad.
+- [`mecanica/`](./mecanica/) → Diseño del chasis y fabricación.
+- [`software/`](./software/) → Código del sistema de control.
+- [`assets/`](./assets/) → Recursos visuales del proyecto.
 
 ---
 
 ## Integrantes del proyecto
 
-### Carla Freire Muíño
+### Carla Freire Muíño  
 GitHub: [@carlafreeire](https://github.com/carlafreeire)
 
----
-
-### Noelia Castro Rodríguez
+### Noelia Castro Rodríguez  
 GitHub: [@liln0e](https://github.com/liln0e)
 
 ---
 
-## Repositorio
+## Licencia
 
-Este repositorio sirve para almacenar y documentar el desarrollo del proyecto, incluyendo la parte electrónica, mecánica, software y recursos gráficos relacionados con el péndulo invertido.
-
-### Estructura del repositorio
-
-El proyecto está organizado en las siguientes carpetas:
-
-- **README.md** → Documento principal del proyecto.
-- **electronica/** → Diseño de circuitos, PCB y documentación electrónica.
-- **mecanica/** → Diseño del chasis y estructura mecánica del robot.
-- **software/** → Código del robot y lógica de funcionamiento.
-- **assets/** → Recursos visuales empleados en la documentación del proyecto.
+Proyecto desarrollado con fines académicos y educativos.

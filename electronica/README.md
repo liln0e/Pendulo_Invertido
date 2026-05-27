@@ -1,28 +1,23 @@
 # Diseño electrónico del péndulo invertido
 
-En esta carpeta se incluye la documentación electrónica necesaria para el desarrollo del **péndulo invertido autocontrolado**, basado en un sistema de equilibrio mediante control PID.
+Esta carpeta contiene los archivos del diseño electrónico del **péndulo invertido autocontrolado**, desarrollados en **KiCad**.
 
 ## Contenido
 
-Los siguientes archivos corresponden al diseño electrónico realizado en **KiCad**:
+- `Pendulo_Inverso.kicad_sch` → Esquemático electrónico del sistema.
+- `Pendulo_Inverso.kicad_pcb` → Diseño de la PCB.
+- `Pendulo_Inverso.kicad_pro` → Proyecto completo de KiCad.
 
-- `Pendulo_Inverso.kicad_sch` → Esquemático electrónico del circuito.
-- `Pendulo_Inverso.kicad_pcb` → Diseño de la PCB del sistema.
-- `Pendulo_Inverso.kicad_pro` → Archivo del proyecto de KiCad.
+## Descripción
 
-## Diseño electrónico
+La electrónica integra los principales componentes del robot:
 
-La PCB ha sido diseñada para integrar los componentes electrónicos necesarios para el funcionamiento del sistema, incluyendo:
+- **ESP32 DevKitC** como unidad de control.
+- **MPU6050** para la medición de inclinación.
+- **TB6612FNG** para el control de motores.
+- **LM7805** para regulación de tensión.
+- Conectores de alimentación y motores.
 
-- Alimentación del sistema.
-- Integración del **ESP32 DevKitC** como unidad principal de control.
-- Conexión del sensor **MPU6050** para la medición de aceleración e inclinación.
-- Integración del controlador de motores **TB6612FNG**.
-- Conexiones para motores DC con reductora.
-- Regulación de tensión mediante **LM7805** y componentes auxiliares.
+El diseño fue realizado sobre una **PCB personalizada** con el objetivo de reducir cableado, facilitar el ensamblaje y mejorar la integración del sistema.
 
-El diseño electrónico se ha realizado utilizando **KiCad**, permitiendo organizar el esquema eléctrico, la distribución de componentes y la fabricación de una PCB personalizada para el proyecto.
-
-Durante el desarrollo se realizaron distintas iteraciones del circuito para mejorar la integración de componentes y adaptar el sistema a las necesidades del control del péndulo invertido.
-
-Las imágenes del esquemático, diseño PCB y placa fabricada se encuentran disponibles dentro de la documentación del proyecto.
+La explicación técnica detallada puede consultarse en [`../documentacion.md`](../documentacion.md).

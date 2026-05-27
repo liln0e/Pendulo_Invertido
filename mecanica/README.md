@@ -6,9 +6,7 @@ En esta carpeta se incluye la documentación mecánica necesaria para el desarro
 
 Los siguientes archivos corresponden al diseño e impresión de la estructura mecánica del robot:
 
-- `nombre_chasis.3mf` → Modelo 3D original del chasis del péndulo invertido.
-- `nombre_chasis.gcode.3mf` → Archivo preparado para la impresión 3D del chasis.
-- `nombre_pieza.3mf` → Modelos adicionales empleados en la estructura del robot.
+- `teoria_cotrol_3d.3mf` → Modelo 3D original del chasis del péndulo invertido.
 - `nombre_pieza.gcode.3mf` → Archivos preparados para impresión 3D.
 
 ## Diseño mecánico

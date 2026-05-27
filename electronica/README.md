@@ -6,9 +6,9 @@ En esta carpeta se incluye la documentación electrónica necesaria para el desa
 
 Los siguientes archivos corresponden al diseño electrónico realizado en **KiCad**:
 
-- `nombre_proyecto.kicad_sch` → Esquemático electrónico del circuito.
-- `nombre_proyecto.kicad_pcb` → Diseño de la PCB del sistema.
-- `nombre_proyecto.kicad_pro` → Archivo del proyecto de KiCad.
+- `Pendulo_Inverso.kicad_sch` → Esquemático electrónico del circuito.
+- `Pendulo_Inverso.kicad_pcb` → Diseño de la PCB del sistema.
+- `Pendulo_Inverso.kicad_pro` → Archivo del proyecto de KiCad.
 
 ## Diseño electrónico
 

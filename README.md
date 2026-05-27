@@ -13,7 +13,7 @@ A lo largo del desarrollo se trabajó en el diseño del chasis, integración ele
 ## Integrantes del proyecto
 
 ### Carla Freire Muíño
-GitHub: [@usuario-carla](https://github.com/usuario-carla)
+GitHub: [@carlafreeire](https://github.com/carlafreeire)
 
 ---
 

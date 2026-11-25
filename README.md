@@ -6,7 +6,8 @@
 
 <p align="center">
   <b>Robot autoequilibrado de dos ruedas con ESP32 y control PID</b><br>
-  Grado en Robótica · Escola Politécnica Superior de Enxeñaría (EPSE) · USC
+  Grado en Robótica · Escola Politécnica Superior de Enxeñaría (EPSE) · USC<br>
+  Asignatura: <a href="https://www.usc.gal/es/estudios/grados/ingenieria-arquitectura/grado-robotica-2a-edicion/20262027/teoria-control-19946-19042-2-105704">Teoría de control</a>
 </p>
 
 <div align="center">
@@ -18,6 +19,8 @@
 ---
 
 ## Descripción
+
+Proyecto de la asignatura **Teoría de control** del Grado en Robótica.
 
 Robot de dos ruedas que **se mantiene en equilibrio por sí solo**. Un sensor **MPU6050** mide la inclinación, un **filtro complementario** junta los datos del acelerómetro y del giroscopio, y un controlador **PID** que corre en una **ESP32** mueve los motores en tiempo real para devolver el robot a la vertical.
 

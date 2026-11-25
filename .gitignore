@@ -1,0 +1,18 @@
+# KiCad: preferencias locales, copias de seguridad y bloqueos
+*.kicad_prl
+*-backups/
+*.bak
+*.lck
+fp-info-cache
+_autosave-*
+\#auto_saved_files#
+
+# Arduino / PlatformIO
+build/
+.pio/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/

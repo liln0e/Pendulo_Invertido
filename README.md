@@ -46,9 +46,10 @@ El proyecto incluye:
 ## Estructura del repositorio
 
 ```txt
-Proyecto_Pendulo_Invertido/
+Pendulo_Invertido/
 │
 ├── README.md
+├── LICENSE
 ├── costes.md
 ├── documentacion.md
 │
@@ -84,4 +85,4 @@ GitHub: [@liln0e](https://github.com/liln0e)
 
 ## Licencia
 
-Proyecto desarrollado con fines académicos y educativos.
+Proyecto desarrollado con fines académicos y educativos, publicado bajo la [licencia MIT](./LICENSE).

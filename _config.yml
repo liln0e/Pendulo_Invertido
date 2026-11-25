@@ -32,6 +32,5 @@ header_pages:
 exclude:
   - Gemfile
   - Gemfile.lock
-  - LICENSE
   - .github/
   - vendor/

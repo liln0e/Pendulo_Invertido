@@ -20,6 +20,9 @@ plugins:
   - jekyll-default-layout
   - jekyll-seo-tag
 
+titles_from_headings:
+  strip_title: true
+
 relative_links:
   enabled: true
   collections: false

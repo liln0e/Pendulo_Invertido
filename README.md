@@ -43,6 +43,13 @@ MPU6050 → Estimación del ángulo → Filtro complementario → PID → TB6612
 | [`PID_IIR.ino`](software/PID_IIR.ino) | PID escrito como filtro IIR |
 | [`PID_Filtrado.ino`](software/PID_Filtrado.ino) | PID con el término derivativo filtrado, para reducir el ruido |
 
+## Problemas y soluciones
+
+- **Conexión errónea en la PCB:** cortamos la pista, unimos los puntos correctos con un hilo de cobre y lo aislamos con celo.
+- **Pin de un motor quemado:** como las dos ruedas siempre reciben la misma señal, las conectamos las dos al pin que seguía funcionando y el robot siguió equilibrándose.
+
+Más detalles en la [documentación técnica](documentacion.md#problemas-encontrados-y-soluciones).
+
 ## Hardware
 
 | Componente | Función |

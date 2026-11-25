@@ -9,11 +9,11 @@
   Grado en Robótica · Escola Politécnica Superior de Enxeñaría (EPSE) · USC
 </p>
 
-<p align="center">
-  <a href="documentacion.md">Documentación técnica</a> ·
-  <a href="costes.md">Costes (≈ 20,60 €)</a> ·
-  <a href="software/">Código</a>
-</p>
+<div align="center">
+
+[Web del proyecto](https://liln0e.github.io/Pendulo_Invertido/) · [Documentación técnica](documentacion.md) · [Costes (≈ 20,60 €)](costes.md) · [Fotos](fotos.md) · [Código](software/README.md)
+
+</div>
 
 ---
 
@@ -65,6 +65,8 @@ Pendulo_Invertido/
 ├── LICENSE
 ├── documentacion.md   → Explicación técnica completa
 ├── costes.md          → Desglose de materiales y coste
+├── fotos.md           → Galería del proceso
+├── _config.yml        → Configuración de la web (Jekyll + GitHub Pages)
 ├── assets/            → Fotos e imágenes del proceso
 ├── electronica/       → Esquemático y PCB en KiCad
 ├── mecanica/          → Modelo 3D (.3mf) y G-code del chasis

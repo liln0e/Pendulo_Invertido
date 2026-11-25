@@ -1,0 +1,37 @@
+title: Péndulo Invertido Autocontrolado
+description: Robot autoequilibrado de dos ruedas con ESP32 y control PID. Proyecto del Grado en Robótica (EPSE, USC).
+
+theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  parse_block_html: true
+
+sass:
+  quiet_deps: true
+
+# La web se genera a partir de los mismos .md del repositorio:
+# README.md hace de portada y los README de cada carpeta, de índice de esa carpeta.
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-relative-links
+  - jekyll-titles-from-headings
+  - jekyll-default-layout
+  - jekyll-seo-tag
+
+relative_links:
+  enabled: true
+  collections: false
+
+header_pages:
+  - documentacion.md
+  - costes.md
+  - fotos.md
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - .github/
+  - vendor/

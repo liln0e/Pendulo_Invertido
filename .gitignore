@@ -7,6 +7,14 @@ fp-info-cache
 _autosave-*
 \#auto_saved_files#
 
+# Jekyll
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/
+Gemfile.lock
+
 # Arduino / PlatformIO
 build/
 .pio/

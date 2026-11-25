@@ -6,7 +6,8 @@ Esta carpeta contiene los archivos del diseño electrónico del **péndulo inver
 
 - `Pendulo_Inverso.kicad_sch` → Esquemático electrónico del sistema.
 - `Pendulo_Inverso.kicad_pcb` → Diseño de la PCB.
-- `Pendulo_Inverso.kicad_pro` → Proyecto completo de KiCad.
+
+Los dos archivos se abren directamente con KiCad: el Editor de esquemáticos y el Editor de PCB.
 
 ## Descripción
 

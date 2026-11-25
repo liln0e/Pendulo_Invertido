@@ -7,7 +7,7 @@ En esta carpeta se incluyen recursos visuales empleados para documentar el desar
 Los siguientes archivos corresponden a material visual del proyecto:
 
 - `esquematico_kicad.jpg` → Esquemático electrónico del sistema realizado en KiCad.
-- `pcb_diseno_kicad.png` → Diseño de la PCB realizado en KiCad.
+- `pcb_diseno_kicad.jpeg` → Diseño de la PCB realizado en KiCad.
 - `pcb_fabricada.jpeg` → PCB fabricada tras el proceso de producción.
 - `montaje_componentes.jpeg` → Integración de los principales componentes electrónicos sobre el chasis.
 - `robot_ensamblado.jpeg` → Estado del robot completamente ensamblado.

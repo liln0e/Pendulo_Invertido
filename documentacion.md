@@ -117,9 +117,10 @@ Corrección del equilibrio
 El proyecto se organiza en distintas carpetas para separar la documentación y facilitar el desarrollo:
 
 ```txt
-Proyecto_Pendulo_Invertido/
+Pendulo_Invertido/
 │
 ├── README.md
+├── LICENSE
 ├── costes.md
 ├── documentacion.md
 │

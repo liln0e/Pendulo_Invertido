@@ -47,7 +47,7 @@ El bucle de control se ejecuta cada **5 ms** (200 Hz). Hay vídeos del robot equ
 
 ## Problemas y soluciones
 
-- **Salidas del ESP32 mal asignadas en la PCB:** al compararla con el pinout vimos que el I2C del sensor iba a pines incorrectos. Cortamos la pista, hicimos un puente con hilo de cobre hasta el pin correcto y lo aislamos con celo.
+- **Salidas del ESP32 mal asignadas en la PCB:** al compararla con el pinout vimos que el SCL y el SDA del sensor iban a IO0 e IO2 en vez de a GPIO22 y GPIO21, los pines I2C. Cortamos las pistas, hicimos puentes con hilo de cobre hasta los pines correctos y los aislamos con celo.
 - **Salida del driver quemada:** un cortocircuito quemó la salida del TB6612FNG de una de las ruedas. Como las dos ruedas están en el mismo eje y siempre hacen lo mismo, conectamos los dos motores a la salida que funcionaba, y el robot siguió equilibrándose.
 
 Más detalles en la [documentación técnica](documentacion.md#problemas-encontrados-y-soluciones).

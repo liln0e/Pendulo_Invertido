@@ -128,15 +128,24 @@ Al montar la placa descubrimos, **comparando el diseño con el pinout del ESP32*
 
 ![Pinout del ESP32 DevKitC](assets/pinout_esp32.jpeg)
 
-En el esquemático, las líneas **SDA y SCL** del MPU6050 van a **IO2 e IO0**. Sin embargo, el pinout marca como pines I2C del ESP32 el **GPIO21 (SDA)** y el **GPIO22 (SCL)**, que son los que usa el código final. Además, IO0 e IO2 son pines de arranque (*strapping pins*) del ESP32, así que conviene no usarlos para periféricos.
+Al contrastar la PCB (`Pendulo_Inverso.kicad_pcb`) con el pinout, vemos que **el fallo está en las dos líneas I2C del sensor**:
 
-Como no queríamos fabricar otra placa, lo arreglamos a mano:
+| Señal del MPU6050 | En la PCB va a | Pin I2C según el pinout (y el código final) |
+|---|---|---|
+| SCL | IO0 (pin 25 de la placa) | **GPIO22** (pin 36) |
+| SDA | IO2 (pin 24 de la placa) | **GPIO21** (pin 33) |
 
-1. **Cortamos la pista** que iba al pin incorrecto.
-2. **Hicimos un puente con un hilo de cobre** soldado hasta el pin correcto.
-3. **Cubrimos el hilo y las soldaduras con celo** para aislarlos y que el hilo no se moviera.
+El resto de conexiones son correctas: las siete señales del driver de motores (PWMA, AIN1, AIN2, STBY, BIN1, BIN2 y PWMB, en IO32, IO33, IO25, IO26, IO27, IO14 e IO12), la alimentación de 3,3 V y 5 V y las masas. La huella del ESP32 también sigue el mismo orden de pines que la placa real.
 
-Con este puente la placa funcionó correctamente. En el [vídeo del puente](assets/videos/puente_pcb.mp4) se ve el arreglo. En una siguiente versión de la PCB habría que corregirlo directamente en el diseño de KiCad.
+Además de no ser los pines I2C del pinout, **IO0 e IO2 son pines de arranque** (*strapping pins*) del ESP32. Su nivel al encenderse decide cómo arranca la placa. Las resistencias *pull-up* del módulo del MPU6050 conectadas a ellos pueden impedir programar el ESP32 o hacer que no arranque bien.
+
+Como IO0/IO2 y GPIO21/GPIO22 están en la misma fila de pines del ESP32, lo arreglamos a mano sin fabricar otra placa:
+
+1. **Cortamos las pistas** que iban a IO0 e IO2.
+2. **Hicimos puentes con hilo de cobre** por la cara de abajo de la placa, a lo largo de esa fila, hasta GPIO22 y GPIO21.
+3. **Cubrimos los hilos y las soldaduras con celo** para aislarlos y que no se movieran.
+
+Con los puentes la placa funcionó correctamente. En el [vídeo del puente](assets/videos/puente_pcb.mp4) se ven los hilos bajo el celo. En una siguiente versión de la PCB habría que conectar SDA a GPIO21 y SCL a GPIO22 directamente en el diseño de KiCad.
 
 ## Pin del driver quemado
 

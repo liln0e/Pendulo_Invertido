@@ -24,7 +24,7 @@ Las ganancias se ajustaron probando: **`Kp = 10`** y **`Kd = 2`**. En los contro
 
 ## Pruebas de hardware
 
-En [`pruebas/`](pruebas/) hay dos programas para comprobar cada parte por separado antes de cerrar el lazo de control:
+En la carpeta `pruebas/` hay dos programas para comprobar cada parte por separado antes de cerrar el lazo de control:
 
 - [`Prueba_ESP32_MPU6050`](pruebas/Prueba_ESP32_MPU6050/Prueba_ESP32_MPU6050.ino): comprueba la comunicación I2C con el sensor y muestra el *roll* y el *pitch* por el monitor serie. Sirve para ver hacia qué lado crece el ángulo al inclinar el robot con la mano. Usa la librería **Adafruit MPU6050**.
 - [`Prueba_ESP32_TB6612FNG`](pruebas/Prueba_ESP32_TB6612FNG/Prueba_ESP32_TB6612FNG.ino): mueve los motores hacia delante y hacia atrás, y gira a cada lado, para comprobar el driver, el PWM y el sentido de giro de cada rueda.

@@ -8,31 +8,31 @@ Proceso de diseño, fabricación y montaje del péndulo invertido, y el robot fu
 
 ### Controlador original: PD con derivada filtrada
 
-<video src="assets/videos/pd_derivada_filtrada.mp4" controls preload="metadata" width="100%"></video>
+<video src="assets/videos/pd_derivada_filtrada.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
 
 [Descargar vídeo](assets/videos/pd_derivada_filtrada.mp4)
 
 ### PID directo
 
-<video src="assets/videos/pid_directo.mp4" controls preload="metadata" width="100%"></video>
+<video src="assets/videos/pid_directo.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
 
 [Descargar vídeo](assets/videos/pid_directo.mp4)
 
 ### PID IIR
 
-<video src="assets/videos/pid_iir.mp4" controls preload="metadata" width="100%"></video>
+<video src="assets/videos/pid_iir.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
 
 [Descargar vídeo](assets/videos/pid_iir.mp4)
 
 ### Estructura del robot
 
-<video src="assets/videos/estructura_robot.mp4" controls preload="metadata" width="100%"></video>
+<video src="assets/videos/estructura_robot.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
 
 [Descargar vídeo](assets/videos/estructura_robot.mp4)
 
 ### Puente en la PCB
 
-<video src="assets/videos/puente_pcb.mp4" controls preload="metadata" width="100%"></video>
+<video src="assets/videos/puente_pcb.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
 
 [Descargar vídeo](assets/videos/puente_pcb.mp4)
 

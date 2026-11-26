@@ -12,7 +12,7 @@
 
 <div align="center">
 
-[Web del proyecto](https://liln0e.github.io/Pendulo_Invertido/) · [Documentación técnica](documentacion.md) · [Costes (≈ 20,60 €)](costes.md) · [Fotos](fotos.md) · [Código](software/README.md)
+[Documentación técnica](documentacion.md) · [Costes (≈ 20,60 €)](costes.md) · [Fotos y vídeos](fotos.md) · [Código](software/README.md)
 
 </div>
 
@@ -78,7 +78,6 @@ Pendulo_Invertido/
 ├── documentacion.md   → Explicación técnica completa
 ├── costes.md          → Desglose de materiales y coste
 ├── fotos.md           → Fotos y vídeos del proceso
-├── _config.yml        → Configuración de la web (Jekyll + GitHub Pages)
 ├── assets/            → Fotos, pinout del ESP32 y vídeos (assets/videos/)
 ├── electronica/       → Esquemático y PCB en KiCad
 ├── mecanica/          → Modelo 3D (.3mf) y G-code del chasis

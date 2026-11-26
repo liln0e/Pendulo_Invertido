@@ -6,37 +6,13 @@ Proceso de diseño, fabricación y montaje del péndulo invertido, y el robot fu
 
 ## Vídeos del robot
 
-### Controlador original: PD con derivada filtrada
-
-<video src="assets/videos/pd_derivada_filtrada.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
-
-[Descargar vídeo](assets/videos/pd_derivada_filtrada.mp4)
-
-### PID directo
-
-<video src="assets/videos/pid_directo.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
-
-[Descargar vídeo](assets/videos/pid_directo.mp4)
-
-### PID IIR
-
-<video src="assets/videos/pid_iir.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
-
-[Descargar vídeo](assets/videos/pid_iir.mp4)
-
-### Estructura del robot
-
-<video src="assets/videos/estructura_robot.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
-
-[Descargar vídeo](assets/videos/estructura_robot.mp4)
-
-### Puente en la PCB
-
-<video src="assets/videos/puente_pcb.mp4" controls muted playsinline preload="metadata" style="display:block;margin:0 auto;max-width:100%;max-height:70vh"></video>
-
-[Descargar vídeo](assets/videos/puente_pcb.mp4)
-
-Arreglo de las salidas del ESP32 mal asignadas: pista cortada y puente con hilo de cobre, aislado con celo. Se explica en la [documentación técnica](documentacion.md#salidas-del-esp32-mal-asignadas-en-la-pcb).
+| Vídeo | Qué se ve | Duración |
+|---|---|---|
+| ▶ [Controlador original (PD con derivada filtrada)](assets/videos/pd_derivada_filtrada.mp4) | El robot equilibrándose con el controlador que se usó al final | 31 s |
+| ▶ [PID directo](assets/videos/pid_directo.mp4) | El robot con el PID discreto en forma directa | 32 s |
+| ▶ [PID IIR](assets/videos/pid_iir.mp4) | El robot con el PID en forma incremental (IIR) | 25 s |
+| ▶ [Estructura del robot](assets/videos/estructura_robot.mp4) | El chasis, los motores y la electrónica montada | 24 s |
+| ▶ [Puente en la PCB](assets/videos/puente_pcb.mp4) | Los puentes de hilo de cobre que corrigen las líneas I2C, aislados con celo ([explicación](documentacion.md#salidas-del-esp32-mal-asignadas-en-la-pcb)) | 11 s |
 
 ---
 

@@ -92,7 +92,13 @@ Las funcionalidades principales implementadas son:
 - Generación de señales de control para los motores.
 - Ajuste y depuración mediante monitor serie.
 
-Durante el desarrollo se implementaron distintas versiones del controlador PID con el objetivo de comparar comportamiento, estabilidad y sensibilidad al ruido del sistema.
+Durante el desarrollo se implementaron tres versiones del controlador para comparar su comportamiento, su estabilidad y su sensibilidad al ruido:
+
+- **Controlador original (PD con derivada filtrada):** la acción derivativa se obtiene directamente de la velocidad angular del giroscopio, suavizada con un filtro pasa-bajos. Es el que se usó en el robot, con `Kp = 10` y `Kd = 2`, ajustados de forma experimental.
+- **PID directo:** calcula por separado las acciones proporcional, integral y derivativa. La derivada sale de la diferencia entre el error actual y el anterior.
+- **PID IIR:** el mismo PID escrito como una ecuación incremental, con tres coeficientes (`A0`, `A1`, `A2`).
+
+En los dos últimos, `Ki` empieza en 0, así que funcionan como un PD hasta que se le da otro valor. El bucle de control se ejecuta cada **5 ms** (200 Hz). Hay vídeos del robot con cada controlador en la [página de fotos y vídeos](fotos.md), y el detalle de cada código en [`software/`](software/README.md).
 
 La lógica simplificada del software es:
 
@@ -116,25 +122,31 @@ Corrección del equilibrio
 
 Como en cualquier prototipo, no todo salió bien a la primera. Estos son los dos problemas principales y cómo los resolvimos.
 
-## Conexión errónea en la PCB
+## Salidas del ESP32 mal asignadas en la PCB
 
-Al montar la placa vimos que **una de las conexiones de la PCB estaba mal diseñada**. Como no queríamos fabricar otra placa, la arreglamos a mano:
+Al montar la placa descubrimos, **comparando el diseño con el pinout del ESP32**, que habíamos asignado mal algunas salidas del ESP32 en la PCB.
 
-1. **Cortamos la pista** errónea para aislar la conexión incorrecta.
-2. **Unimos los puntos correctos con un hilo de cobre** soldado.
-3. **Cubrimos el hilo y las soldaduras con celo** para aislarlos y evitar cortocircuitos o que el hilo se moviera.
+![Pinout del ESP32 DevKitC](assets/pinout_esp32.jpeg)
 
-Con este arreglo la placa funcionó correctamente. En una siguiente versión de la PCB habría que corregir esa conexión directamente en el diseño de KiCad.
+En el esquemático, las líneas **SDA y SCL** del MPU6050 van a **IO2 e IO0**. Sin embargo, el pinout marca como pines I2C del ESP32 el **GPIO21 (SDA)** y el **GPIO22 (SCL)**, que son los que usa el código final. Además, IO0 e IO2 son pines de arranque (*strapping pins*) del ESP32, así que conviene no usarlos para periféricos.
 
-## Pin de un motor quemado
+Como no queríamos fabricar otra placa, lo arreglamos a mano:
 
-Después de un tiempo funcionando bien, el robot dejó de funcionar: **se había quemado el pin que controlaba una de las ruedas**.
+1. **Cortamos la pista** que iba al pin incorrecto.
+2. **Hicimos un puente con un hilo de cobre** soldado hasta el pin correcto.
+3. **Cubrimos el hilo y las soldaduras con celo** para aislarlos y que el hilo no se moviera.
 
-Lo pudimos arreglar gracias a cómo funciona el control. En un péndulo invertido las dos ruedas tienen que moverse siempre igual, hacia delante o hacia atrás a la vez, para corregir la inclinación. El código ya lo hacía así: los dos motores reciben **la misma señal PWM y el mismo sentido de giro** (`channelA` y `channelB` siempre llevan el mismo valor).
+Con este puente la placa funcionó correctamente. En el [vídeo del puente](assets/videos/puente_pcb.mp4) se ve el arreglo. En una siguiente versión de la PCB habría que corregirlo directamente en el diseño de KiCad.
 
-Así que **conectamos las dos ruedas al pin que seguía funcionando** y el robot volvió a equilibrarse con normalidad.
+## Pin del driver quemado
 
-> **Lección aprendida:** como las dos ruedas siempre se mueven igual, en este robot bastaría con un solo canal de control para los dos motores. Tener dos canales independientes sirve para que el robot pueda girar o para compensar diferencias entre los motores, pero no es imprescindible para mantener el equilibrio.
+El robot funcionaba perfectamente, hasta que dejó de hacerlo: **un cortocircuito quemó una de las salidas del driver TB6612FNG**, la que movía una de las ruedas.
+
+Lo pudimos arreglar gracias a cómo funciona un péndulo invertido. Las dos ruedas están en el mismo eje y, para corregir la inclinación, **siempre tienen que hacer lo mismo**: avanzar o retroceder a la vez y a la misma velocidad. El código ya lo hacía así, porque los dos motores reciben siempre la misma orden (`moverMotores(velocidad)`).
+
+Así que **conectamos los dos motores a la salida del TB6612FNG que seguía funcionando** y el robot volvió a equilibrarse con normalidad. Así quedó el robot final: los dos motores en la misma salida del driver.
+
+> **Lección aprendida:** como las dos ruedas siempre se mueven igual, para mantener el equilibrio basta con un solo canal del driver para los dos motores. Tener dos canales independientes sirve para que el robot pueda girar o para compensar diferencias entre los motores.
 
 ---
 

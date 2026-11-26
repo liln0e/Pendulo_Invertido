@@ -37,16 +37,18 @@ MPU6050 → Estimación del ángulo → Filtro complementario → PID → TB6612
    └──────────────────────────── corrección de la inclinación ←───────────────┘
 ```
 
-| Versión del código | Qué hace |
+| Controlador | Qué hace |
 |---|---|
-| [`PID_Basico.ino`](software/PID_Basico.ino) | PID discreto básico |
-| [`PID_IIR.ino`](software/PID_IIR.ino) | PID escrito como filtro IIR |
-| [`PID_Filtrado.ino`](software/PID_Filtrado.ino) | PID con el término derivativo filtrado, para reducir el ruido |
+| [`03_PID_derivada_filtrada_original`](software/03_PID_derivada_filtrada_original/03_PID_derivada_filtrada_original.ino) | **El que usó el robot.** Un PD: la derivada sale del giroscopio, suavizada con un filtro pasa-bajos. `Kp = 10`, `Kd = 2`. |
+| [`01_PID_directo`](software/01_PID_directo/01_PID_directo.ino) | PID discreto con las acciones P, I y D calculadas por separado. |
+| [`02_PID_IIR`](software/02_PID_IIR/02_PID_IIR.ino) | El mismo PID escrito como una ecuación incremental (filtro IIR). |
+
+El bucle de control se ejecuta cada **5 ms** (200 Hz). Hay vídeos del robot equilibrándose con cada controlador en la [página de fotos y vídeos](fotos.md).
 
 ## Problemas y soluciones
 
-- **Conexión errónea en la PCB:** cortamos la pista, unimos los puntos correctos con un hilo de cobre y lo aislamos con celo.
-- **Pin de un motor quemado:** como las dos ruedas siempre reciben la misma señal, las conectamos las dos al pin que seguía funcionando y el robot siguió equilibrándose.
+- **Salidas del ESP32 mal asignadas en la PCB:** al compararla con el pinout vimos que el I2C del sensor iba a pines incorrectos. Cortamos la pista, hicimos un puente con hilo de cobre hasta el pin correcto y lo aislamos con celo.
+- **Salida del driver quemada:** un cortocircuito quemó la salida del TB6612FNG de una de las ruedas. Como las dos ruedas están en el mismo eje y siempre hacen lo mismo, conectamos los dos motores a la salida que funcionaba, y el robot siguió equilibrándose.
 
 Más detalles en la [documentación técnica](documentacion.md#problemas-encontrados-y-soluciones).
 
@@ -75,19 +77,20 @@ Pendulo_Invertido/
 ├── LICENSE
 ├── documentacion.md   → Explicación técnica completa
 ├── costes.md          → Desglose de materiales y coste
-├── fotos.md           → Galería del proceso
+├── fotos.md           → Fotos y vídeos del proceso
 ├── _config.yml        → Configuración de la web (Jekyll + GitHub Pages)
-├── assets/            → Fotos e imágenes del proceso
+├── assets/            → Fotos, pinout del ESP32 y vídeos (assets/videos/)
 ├── electronica/       → Esquemático y PCB en KiCad
 ├── mecanica/          → Modelo 3D (.3mf) y G-code del chasis
-└── software/          → Código del controlador PID (Arduino / ESP32)
+└── software/          → Los tres controladores y pruebas de hardware (pruebas/)
 ```
 
 ## Cómo usarlo
 
-1. Instala en el Arduino IDE el soporte para placas **ESP32** y la librería **MPU6050** (`MPU6050.h`).
-2. Abre el `.ino` que quieras de [`software/`](software/), selecciona la placa **ESP32 Dev Module** y súbelo.
-3. Para ajustar el controlador, cambia `Kp`, `Ki` y `Kd` al principio del código (por defecto: `Kp = 18.0`, `Ki = 0.0`, `Kd = 0.8`). Con el monitor serie puedes ver lo que pasa mientras pruebas.
+1. Instala en el Arduino IDE el **core de ESP32 versión 3.x**. Los controladores leen el MPU6050 directamente por I2C, así que no necesitan librerías externas.
+2. Abre la carpeta del controlador que quieras de [`software/`](software/README.md), selecciona la placa **ESP32 Dev Module** y súbelo.
+3. Para ajustar el controlador, cambia `Kp`, `Ki` y `Kd` al principio del código (por defecto `Kp = 10`, `Kd = 2` y `Ki = 0`). Con el monitor serie puedes ver el ángulo mientras pruebas.
+4. Si es la primera vez, usa antes los [programas de prueba](software/README.md#pruebas-de-hardware) para comprobar el sensor y los motores por separado.
 
 ## Equipo
 

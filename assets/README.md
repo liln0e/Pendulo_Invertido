@@ -11,6 +11,8 @@ Los siguientes archivos corresponden a material visual del proyecto:
 - `pcb_fabricada.jpeg` → PCB fabricada tras el proceso de producción.
 - `montaje_componentes.jpeg` → Integración de los principales componentes electrónicos sobre el chasis.
 - `robot_ensamblado.jpeg` → Estado del robot completamente ensamblado.
+- `pinout_esp32.jpeg` → Pinout del ESP32 DevKitC, con el que detectamos las salidas mal asignadas en la PCB.
+- `videos/` → Vídeos del robot con cada controlador (`pd_derivada_filtrada.mp4`, `pid_directo.mp4`, `pid_iir.mp4`), de su estructura (`estructura_robot.mp4`) y del puente en la PCB (`puente_pcb.mp4`).
 
 ## Descripción
 
